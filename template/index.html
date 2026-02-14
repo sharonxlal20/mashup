@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mashup Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 0 20px;
+            background: #f5f5f5;
+        }
+        h1 { text-align: center; }
+        form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        table { width: 100%; border-spacing: 10px; }
+        td { padding: 8px 4px; }
+        td:first-child { font-weight: bold; white-space: nowrap; }
+        input[type="text"], input[type="number"], input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 40px;
+            background: #e89a2e;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover { background: #d08820; }
+        .error { color: red; text-align: center; margin-top: 10px; }
+        .info { color: #555; text-align: center; margin-top: 15px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h1>Mashup Generator</h1>
+    <form method="POST" action="/mashup">
+        <table>
+            <tr>
+                <td>Singer Name</td>
+                <td><input type="text" name="singer_name" placeholder="Sharry Mann" required></td>
+            </tr>
+            <tr>
+                <td># of videos</td>
+                <td><input type="number" name="num_videos" placeholder="20" min="2" required></td>
+            </tr>
+            <tr>
+                <td>Duration of each video</td>
+                <td><input type="number" name="duration" placeholder="30" min="20" required> sec</td>
+            </tr>
+            <tr>
+                <td>Email Id</td>
+                <td><input type="email" name="email" placeholder="example@gmail.com" required></td>
+            </tr>
+        </table>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+    <p class="info">The mashup will be generated and sent to your email as a zip file.<br>You can also download it directly from the results page.</p>
+</body>
+</html>

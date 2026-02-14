@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mashup Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 0 20px;
+            background: #f5f5f5;
+        }
+        h1 { text-align: center; }
+        .card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .success { color: green; font-size: 18px; }
+        .error { color: red; font-size: 18px; }
+        audio { margin: 20px 0; width: 100%; }
+        .btn {
+            display: inline-block;
+            margin: 10px 8px;
+            padding: 10px 30px;
+            background: #e89a2e;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .btn:hover { background: #d08820; }
+        .details { margin-top: 15px; color: #555; font-size: 14px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Mashup Result</h1>
+    <div class="card">
+        {% if success %}
+        <p class="success">Mashup created successfully!</p>
+
+        <h3>Preview</h3>
+        <audio controls>
+            <source src="{{ audio_url }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <div>
+            <a href="{{ audio_url }}" class="btn" download>Download MP3</a>
+            <a href="{{ zip_url }}" class="btn" download>Download ZIP</a>
+        </div>
+
+        {% if email_sent %}
+        <p style="color: green; margin-top: 15px;">ZIP file sent to <strong>{{ email }}</strong></p>
+        {% else %}
+        <p style="color: red; margin-top: 15px;">Could not send email: {{ email_error }}</p>
+        {% endif %}
+
+        <div class="details">
+            <p><strong>Singer:</strong> {{ singer_name }}</p>
+            <p><strong>Videos downloaded:</strong> {{ num_videos }}</p>
+            <p><strong>Duration per clip:</strong> {{ duration }} sec</p>
+        </div>
+
+        {% else %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <a href="/" class="btn" style="margin-top: 20px;">Back</a>
+    </div>
+</body>
+</html>
