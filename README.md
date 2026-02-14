@@ -1,7 +1,7 @@
 # YouTube Mashup Generator
 
-**Name:** Vansh Singla  
-**Roll No:** 102303975  
+**Name:** Sharon Abhishek Lal
+**Roll No:** 102313037
 
 This project implements a complete Mashup system consisting of:
 
@@ -17,7 +17,7 @@ The system downloads multiple YouTube songs of a given singer, extracts audio, t
 
 ## Program 1 – Command Line Mashup
 
-**File:** `102303975.py`
+**File:** `102313037.py`
 
 ### Features
 - Downloads N videos of a given singer from YouTube
@@ -135,5 +135,5 @@ Server runs at: http://127.0.0.1:5000
 
 ## Author
 
-**Vansh Singla**  
-**Roll No:** 102303975
+**Sharon Abhishek Lal**  
+**Roll No:** 102313037
